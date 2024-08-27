@@ -73,6 +73,10 @@ class StickyGroupedListView<T, E> extends StatefulWidget {
   /// Notifier that reports the items laid out in the list after each frame.
   final ItemPositionsListener? itemPositionsListener;
 
+  final ScrollOffsetListener? scrollOffsetListener;
+
+  final ScrollOffsetController? scrollOffsetController;
+
   /// The axis along which the scroll view scrolls.
   ///
   /// Defaults to [Axis.vertical].
@@ -155,6 +159,8 @@ class StickyGroupedListView<T, E> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.itemScrollController,
     this.itemPositionsListener,
+    this.scrollOffsetController,
+    this.scrollOffsetListener,
     this.physics,
     this.padding,
     this.reverse = false,
@@ -243,6 +249,8 @@ class StickyGroupedListViewState<T, E>
           itemScrollController: _controller,
           physics: widget.physics,
           itemPositionsListener: _listener,
+          scrollOffsetController: widget.scrollOffsetController,
+          scrollOffsetListener: widget.scrollOffsetListener,
           initialAlignment: widget.initialAlignment,
           initialScrollIndex: widget.initialScrollIndex * 2,
           minCacheExtent: widget.minCacheExtent,
